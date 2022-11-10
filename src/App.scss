@@ -14,6 +14,7 @@ body {
   font-size: 1.6rem;
   display: grid;
   padding: 1rem;
+  border-top: 3px solid #ff5351;
   #root {
     display: grid;
     gap: 2rem;
@@ -159,15 +160,14 @@ body {
           border-radius: 2rem;
           position: relative;
           box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
+          border: 2px solid #0000001f;
           .image {
             position: relative;
-            top: -3rem;
             img {
               width: 5rem;
 
               &.upImg {
-                width: 8rem;
+                width: 11rem;
               }
             }
           }
@@ -233,24 +233,49 @@ body {
                   border: 1px solid black;
                 }
                 &.psychic {
-                  background-color:  rgb(251, 255, 0) !important;
+                  background-color: rgb(251, 255, 0) !important;
                   color: rgb(0, 0, 0);
-           
                 }
                 &.ground {
-                  background-color:  rgb(253, 185, 121) !important;
+                  background-color: rgb(253, 185, 121) !important;
                   color: rgb(255, 255, 255);
-           
                 }
                 &.rock {
-                  background-color:  rgb(63, 59, 56) !important;
+                  background-color: rgb(63, 59, 56) !important;
                   color: rgb(255, 255, 255);
-           
                 }
               }
             }
           }
         }
+      }
+      .navigateArea {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        z-index: 997;
+        width: 100%;
+        background-color: white;
+        padding: 1rem 0;
+        box-shadow: rgb(149 157 165 / 20%) 1px -5px 24px 8px;
+        span{
+          cursor: pointer;
+          &.arrowDisable{
+           cursor: auto;
+           opacity: .8;
+          }
+        &:hover{
+          opacity: .8;
+        }
+        }
+      }
+      .loadingImg{
+        width: 100%;
+        max-width: 24rem;
       }
     }
   }
@@ -292,7 +317,7 @@ body {
       top: -100vh;
       gap: 5rem;
       transition: 0.4s ease transform;
-      z-index: 99;
+      z-index: 998;
 
       &.show {
         transform: translateY(100vh);

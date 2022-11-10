@@ -32,7 +32,7 @@ function PokemonProvider({ children }) {
   //     setUrl(newURL)
   // }
   const [initial, setInitial] = useState(1);
-  const [finaly, setFinaly] = useState(21);
+  const [finaly, setFinaly] = useState(20);
   const [pokemonsList, setPokemonList] = useState([]);
   const [load, setLoad] = useState(false)
   const fetchPokemon = () => {
@@ -59,7 +59,6 @@ function PokemonProvider({ children }) {
   const nextPagePokemon = () =>{
     const ini = initial  + 20
     const fin = finaly + 20
-    console.log(ini, fin);
     setInitial(ini)
     setFinaly(fin)
     fetchPokemon();
@@ -69,10 +68,37 @@ function PokemonProvider({ children }) {
     setLoad(false)
     }, 1000);
   } 
-
+  const backPagePokemon = () =>{
+    if(initial > 20){
+      const ini = initial  - 20
+    const fin = finaly - 20
+    setInitial(ini)
+    setFinaly(fin)
+    fetchPokemon();
+    setLoad(true)
+    setTimeout(() => {
+        
+    setLoad(false)
+    }, 1000);
+    }
+  } 
+  const homePagePokemon = () =>{
+    if(initial > 20){
+      const ini = 1
+    const fin =  20
+    setInitial(ini)
+    setFinaly(fin)
+    fetchPokemon();
+    setLoad(true)
+    setTimeout(() => {
+        
+    setLoad(false)
+    }, 1000);
+    }
+  } 
 
   return (
-    <PokemonContext.Provider value={{ fetchPokemon,load, pokemonsList,nextPagePokemon }}>
+    <PokemonContext.Provider value={{initial, fetchPokemon,backPagePokemon,load, pokemonsList,nextPagePokemon,homePagePokemon}}>
       {children}
     </PokemonContext.Provider>
   );
